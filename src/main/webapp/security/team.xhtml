@@ -123,14 +123,14 @@
         <h:form styleClass="p-m-3" class="container" id="myform">
 			<p:linkButton outcome="premium" value="Área Premium"
 								style="width: 150px; height: 50px; overflow: hidden;"
-								styleClass="odd">
+								styleClass="odd" rendered="#{oddsBean.isPremium()}">
 				<f:param name="time" value="#{param.time}" />
-				<f:param name="team1" value="#{param.team}" />
+				<f:param name="team1" value="#{param.team1}" />
 			</p:linkButton>
             <p:dataScroller id="liveOddsTable" value="#{oddsBean.odds}"
                             var="odd" varStatus="status" chunkSize="30" styleClass="p-liveGamesTable">
 				<f:facet name="header">
-					<p:outputLabel value="#{odd.team1} x #{odd.team2}" styleClass="p-mt-0 p-mb-2" class="text-white" />
+					<p:outputLabel value="#{param.team1} x #{param.team2}" styleClass="p-mt-0 p-mb-2" class="text-white" />
 				</f:facet>
                 <p:outputPanel styleClass="odds-ranking container">
                     <div class="odds-bar medal-silver">
