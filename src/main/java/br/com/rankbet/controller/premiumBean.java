@@ -51,7 +51,7 @@ public class premiumBean implements java.io.Serializable {
     }
 
     public boolean isPremium() {
-        return accountType == "PREMIUM1" || accountType == "PREMIUM2";
+        return accountType.equals("PREMIUM1") || accountType.equals("PREMIUM2");
     }
 
     public boolean isFreemium() {

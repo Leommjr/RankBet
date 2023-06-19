@@ -27,7 +27,7 @@ public class OddsBean implements java.io.Serializable {
         try {
             accountType = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("profile");
             odds = liveGamesService.getAllLiveOdds(id);
-            if("FREE" == accountType){
+            if(accountType.equals("FREE")){
                 if (!odds.isEmpty()) {
                     odds.get(0).setWin1(0);
                     odds.get(0).setWin2(0);
@@ -61,7 +61,7 @@ public class OddsBean implements java.io.Serializable {
     }
 
     public boolean isPremium() {
-        return accountType == "PREMIUM1" || accountType == "PREMIUM2";
+        return accountType.equals("PREMIUM1") || accountType.equals("PREMIUM2");
     }
 
 
