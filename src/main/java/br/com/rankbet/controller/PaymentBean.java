@@ -11,6 +11,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
+import org.primefaces.shaded.json.JSONObject;
 
 import java.io.IOException;
 import java.util.Map;
@@ -58,7 +59,7 @@ public class PaymentBean {
         subscriptionService = new SubscriptionService();
         Map<String, String> params =FacesContext.getCurrentInstance().
                 getExternalContext().getRequestParameterMap();
-         paymentId = params.get("paymentId");
+        paymentId = params.get("paymentId");
         payerid = params.get("PayerID");
 
 

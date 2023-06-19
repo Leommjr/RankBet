@@ -86,10 +86,10 @@ public class PaymentUtil {
                 "  ],\n" +
                 "  \"note_to_payer\": \"Contact us for any questions on your order.\",\n" +
                 "  \"redirect_urls\": {\n" +
-                "    \"return_url\": \""+"http://localhost:8080"+FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()+"/return.xhtml"+"\",\n" +
-                "    \"cancel_url\": \""+"http://localhost:8080"+FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()+"/cancel.xhtml\""+"\n" +
+                "    \"return_url\": \""+"http://localhost:8089"+FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()+"/return.xhtml"+"\",\n" +
+                "    \"cancel_url\": \""+"http://localhost:8089"+FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()+"/cancel.xhtml\""+"\n" +
                 "  }\n" +
                 "}";
-       return body;
+        return body;
     }
 }

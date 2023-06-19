@@ -37,7 +37,7 @@ public class RegisterBean {
     }
 
     private UserDTO userDTO;
-    
+
     private UserService userService;
 
     private String newPasseword;
@@ -108,7 +108,7 @@ public class RegisterBean {
             var freeRole = roleService.findRole(AccountType.valueOf(account).toString());
             var user = userService.getUser(email);
             SubscriptionModel subscriptionModel = new SubscriptionModel();
-            subscriptionModel.setPrice(priceDAO.findByRoleID(freeRole.getId()).getCurrentPrice());
+            subscriptionModel.setPrice(0F);
             subscriptionModel.setCreateAt(LocalDateTime.now());
             subscriptionModel.setUpdateAt(LocalDateTime.now());
             subscriptionModel.setRoleId(freeRole.getId());
