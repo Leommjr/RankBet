@@ -1,6 +1,5 @@
 package br.com.rankbet.controller;
 
-import br.com.rankbet.enums.AccountType;
 import br.com.rankbet.model.h2h.H2h;
 import br.com.rankbet.service.PremiumService;
 import jakarta.faces.application.FacesMessage;
@@ -19,13 +18,13 @@ public class premiumBean implements java.io.Serializable {
 
     private H2h h2h;
 
-    private AccountType accountType;
+    private String accountType;
 
     public void geth2h(String time, String team1) {
         try {
-            accountType = (AccountType) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("profile");
+            accountType = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("profile");
             h2h = PremiumService.getH2h(time, team1);
-            if(AccountType.valueOf("FREE") ==  accountType|| AccountType.valueOf("PREMIUM1") == accountType){
+            if("FREE" ==  accountType|| "PREMIUM1" == accountType){
                 if (h2h != null) {
                     h2h.setWin1(0);
                     h2h.setWin2(0);
@@ -52,10 +51,10 @@ public class premiumBean implements java.io.Serializable {
     }
 
     public boolean isPremium() {
-        return accountType == AccountType.PREMIUM1 || accountType == AccountType.PREMIUM2;
+        return accountType == "PREMIUM1" || accountType == "PREMIUM2";
     }
 
     public boolean isFreemium() {
-        return accountType == AccountType.FREE;
+        return accountType.equals("FREE");
     }
 }

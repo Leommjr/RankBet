@@ -3,231 +3,141 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
-                xmlns:p="http://primefaces.org/ui" template="../WEB-INF/layout.xhtml">
-
+                xmlns:p="http://primefaces.org/ui" template="WEB-INF/layout.xhtml">
 
     <ui:define name="content">
         <style>
-            body{
-				background-color: rgb(28, 28, 28);
-			}
-			.p-liveGamesTable{
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: center;
-				width: 100%;
-				background-color: rgb(28, 28, 28);
-			}
-
-            h2{
-                padding: 3rem;
+            body {
+                background-color: black;
+                font-family: "Helvetica Neue","Open Sans",open-sans,sans-serif;
+                margin: 0;
             }
 
-			.ui-datascroller-content {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: center;
-				width: 100%;
-				background-color: rgb(28, 28, 28)!important;
-				color: white!important;
-				border: none!important;
-			}
-/*
-			.ui-widget-content{
-				background-color: rgb(28, 28, 28)!important;
-			}*/
-
-			.ui-card-body{
-			    justify-content: center;
-			    align-items: center;
-			    text-align: center;
-				background-color: rgb(69, 69, 69)!important;
-				color: white!important;
-				border: none!important;
-				width: 50vw;
-			}
-
-			.p-grid {
-			    display: flex;
-			    justify-content: center;
-			    align-items: center;
-			    text-align: center;
-			    margin-bottom: 100px;
-			}
-
-            .returnHOME{
-                display: block;
+            @font-face {
+                font-family: 'f1';
+                src: url(Formula\ 1.otf) format('opentype'), url(Formula\ 1.ttf) format('truetype');
+                font-weight: normal;
+                font-style: normal;
             }
-			
-			.p-panelgrid {
-			    display: flex;
-			    justify-content: center;
-			    align-items: center;
-			    text-align: center;
-				background-color: rgb(69, 69, 69)!important;
-				color: white!important;
-			}
+            .odds-ranking {
+                margin-top: 5%;
+            }
 
-			.ui-button{
-				background-color:rgb(255, 196, 47)!important;
-				color: black!important;
-				border: none!important;
-			}
+            .odds-bar {
+                display: flex;
+                align-items: center;
+                height: 60px;
+                margin-bottom: 15px;
+                width: 100%;
+                text-align: center;
+                font-size: 1.5rem;
+            }
 
-			.ui-button:hover{
-				background-color:rgb(255, 202, 132)!important;
-				color: black!important;
-				border: none!important;
-			}
+            .odds-bar img {
+                height: 60px;
+                margin-right: 10px;
+            }
 
-			.background-search{
-				background-image: url(../resources/images/teste_blur.jpeg);
-				background-repeat: no-repeat;
-				width: 100%;
-				height: 60vh;
-			}
+            .odds-content {
+                flex-grow: 1;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                padding-right: 20px;
+            }
 
-			.borderNone{
-				border: none!important;
-			}
+            .logo {
+                margin-right: 10px;
+            }
 
-			.ui-inputfield{
-				width:70vw;
-			}
+            .nome-casa-aposta {
+                color: #000;
+                flex-grow: 1;
+                font-family: 'f1',Times,serif!important;
+                font-size: 34px!important;
+            }
 
-			.ui-datascroller-header{
-				background-color: rgb(69, 69, 69)!important;
-			}
+            .ui-button-text{
+                font-size: 16px!important;
+                padding: 0px!important;
+            }
 
-			@media screen and (max-width:281px){
+            .ui-state-hover{
+                background-color:rgb(254, 225, 151)!important;
+                margin: 0px 4px!important;
+                color:black!important;
+                border: none!important;
+            }
 
-				.ui-card-body{
-					justify-content: center;
-					align-items: center;
-					text-align: center;
-					background-color: rgb(69, 69, 69)!important;
-					color: white!important;
-					box-shadow: 4px black;
-					border: none!important;
-					width: 100%!important;
-				}
 
-				h2{
-					padding: 10px;
-				}
+            .ui-datascroller-header{
+                background-color: rgb(69, 69, 69)!important;
+                color: white!important;
+            }
 
-			.ui-datascroller-item{
-					padding: 0%;
-					width: 10%;
-				}
-			}
-						
-			@media screen and (min-width:281px) and (max-width:376px){
+            .ui-datascroller-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                background-color: black!important;
+                color: white!important;
+                border: none!important;
+            }
 
-				.ui-card-body{
-					justify-content: center;
-					align-items: center;
-					text-align: center;
-					background-color: rgb(69, 69, 69)!important;
-					color: white!important;
-					box-shadow: 4px black;
-					border: none!important;
-					width: 100%!important;
-				}
+            .odd {
+                background-color: #eaeaea;
+                padding: 12px 10px!important;
+            }
 
-				h2{
-					padding: 10px;
-				}
+            body .ui-button {
+                background-color:rgb(227, 162, 0)!important;
+                padding: 12px 10px!important;
+                margin: 0px 4px!important;
+                color:black!important;
+                border: none!important;
+            }
 
-			.ui-datascroller-item{
-					padding: 0%;
-				}
-			}
+            body .ui-button.ui-state-hover {
+                background-color:rgb(254, 225, 151)!important;
+                padding: 12px 10px!important;
+                margin: 0px 4px!important;
+                color:black!important;
+                border: none!important;
+            }
+            .medal-silver {
+                background: rgb(105,105,105);
+                background: linear-gradient(90deg, rgba(105,105,105,1) 0%, rgba(229,229,229,1) 50%, rgba(105,105,105,1) 100%);
+            }
+            .title-yellow{
+                color:rgb(255, 196, 47)!important;
+            }
 
-			@media screen and (min-width:376px) and (max-width:1023px){
+            .p-link:hover{
+                color: white!important;
+            }
 
-				.ui-card-body{
-					justify-content: center;
-					align-items: center;
-					text-align: center;
-					background-color: rgb(69, 69, 69)!important;
-					color: white!important;
-					box-shadow: 4px black;
-					border: none!important;
-					width: 100%!important;
-				}
-			} 
-
-			@media screen and (min-width:760px) and (max-width:1023px){
-
-				.ui-card-body{
-					justify-content: center;
-					align-items: center;
-					text-align: center;
-					background-color: rgb(69, 69, 69)!important;
-					color: white!important;
-					box-shadow: 4px black;
-					border: none!important;
-					width: 80vw!important;
-				}
-				.background-search{
-							background-image: url(../resources/images/teste_blur.jpeg);
-							background-repeat: no-repeat;
-							width: 100%;
-							height: 40vh;
-						}
-			} 
-
-			@media screen and (min-width:539px) and (max-width:1023px){
-
-				.ui-card-body{
-					justify-content: center;
-					align-items: center;
-					text-align: center;
-					background-color: rgb(69, 69, 69)!important;
-					color: white!important;
-					box-shadow: 4px black;
-					border: none!important;
-					width: 80vw!important;
-				}
-			} 
-			@media screen and (min-width: 1439px){
-
-				.background-search{
-					background-image: url(../resources/images/large_background.jpeg);
-					background-repeat: no-repeat;
-					width: 100%;
-					height: 60vh;
-				}
-			} 
         </style>
         <f:event type="postAddToView" listener="#{oddsBean.liveOdds(param.id)}" />
-        <h:form styleClass="p-m-3" id="myform">
+        <h:form styleClass="p-m-3" class="container" id="myform">
 			<p:linkButton outcome="premium" value="Área Premium"
 								style="width: 150px; height: 50px; overflow: hidden;"
-								styleClass="p-team-btn" rendered="#{oddsBean.isPremium()}" >
+								styleClass="odd">
 				<f:param name="time" value="#{param.time}" />
 				<f:param name="team1" value="#{param.team}" />
 			</p:linkButton>
             <p:dataScroller id="liveOddsTable" value="#{oddsBean.odds}"
-                            var="odd" chunkSize="30" styleClass="p-liveGamesTable">
-                <p:outputPanel styleClass="p-grid">
-                    <p:card>
-						<f:facet name="subtitle">
-							<p:outputLabel value="#{odd.betName} - #{odd.team1} x #{odd.team2}" styleClass="p-mt-0 p-mb-2" class="text-white" />
-						</f:facet>
-					
-						<h:panelGrid columns="2" cellspacing="2" columnClasses="col-md-6 col-md-6" styleClass="p-mt-2 p-justify-center p-panelgrid">
-							<p:linkButton value="Vitória - #{odd.win1}" href="#{odd.href}" target="_blank"
-								style="width: 150px; height: 50px; overflow: hidden;"
-								styleClass="p-team-btn" />
-							<p:linkButton value="Derrota - #{odd.win2}" href="#{odd.href}" target="_blank"
-								style="width: 150px; height: 50px; overflow: hidden;" styleClass="p-team-btn"
-								 />
-						</h:panelGrid>
-					</p:card>
+                            var="odd" varStatus="status" chunkSize="30" styleClass="p-liveGamesTable">
+				<f:facet name="header">
+					<p:outputLabel value="#{odd.team1} x #{odd.team2}" styleClass="p-mt-0 p-mb-2" class="text-white" />
+				</f:facet>
+                <p:outputPanel styleClass="odds-ranking container">
+                    <div class="odds-bar medal-silver">
+                        <p:outputLabel value="#{odd.betName}" styleClass="nome-casa-aposta" />
+                        <p:linkButton value="Vitória: #{odd.win1}" href="#{odd.href}" target="_blank" styleClass="odd" />
+						<p:linkButton value="Derrota: #{odd.win2}" href="#{odd.href}" target="_blank" styleClass="odd" />
+                    </div>
                 </p:outputPanel>
             </p:dataScroller>
             <h:message for="liveOddsTable" />
