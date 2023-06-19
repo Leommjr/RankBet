@@ -29,9 +29,11 @@
     <nav class="navbar navbar-expand-md justify-content-between">
         <p:graphicImage name="images/logo-rankbet.jpeg" class="navbar-brand img-fluid" width="160" height="auto"/>
         <div>
+
             <p:link href="index.xhtml" value="HOME" class="title-yellow p-link p-4"></p:link>
             <p:link href="updateUserData.xhtml" value="PERFIL" class="title-yellow p-link p-4"></p:link>
-            <p:link href="#" value="SAIR" class="title-yellow p-link p-4"></p:link>
+            <p:commandLink action="#{authenticationBean.logout}" value="SAIR" class="title-yellow p-link p-4"></p:commandLink>
+
         </div>
         <!--<p:selectCheckboxMenu id="multiple" value="#{checkboxView.selectedCities2}" label="Cities" style="min-width: 15rem"
                                   multiple="true" filter="true" filterMatchMode="startsWith" panelStyle="width: 30rem" scrollHeight="250"

@@ -63,4 +63,11 @@ public class AuthenticationBean {
                     addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error Message", "Message Content"));
         }
     }
+    public void logout() throws IOException {
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove( "user" );
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove( "profile" );
+        FacesContext.getCurrentInstance().addMessage( null, new FacesMessage( "Logout", "operação realizada com sucesso!" ) );
+        FacesContext.getCurrentInstance().getExternalContext().redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()+"/login.xhtml");
+
+    }
 }
