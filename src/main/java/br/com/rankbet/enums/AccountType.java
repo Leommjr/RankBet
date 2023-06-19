@@ -12,7 +12,7 @@ public enum AccountType {
         this.type = type;
     }
 
-    public static String getType(){
+    public String getType(){
         return type;
     }
 
