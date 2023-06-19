@@ -19,10 +19,10 @@
         </style>
         <f:event type="postAddToView" listener="#{premiumBean.geth2h(param.time, param.team1)}" />
         <h:form styleClass="p-m-3" id="myform">
-            <p:outputPanel rendered="#{premiumBean.isFreemium()}">
+            <p:outputPanel>
                 <h:outputText value="Área exclusiva para usuários Premium!" />
             </p:outputPanel>
-            <p:panelGrid columns="3" styleClass="p-mt-2 p-justify-center" rendered="#{premiumBean.isPremium()}">
+            <p:panelGrid columns="3" styleClass="p-mt-2 p-justify-center" >
                 <f:facet name="header">
                     <h:outputText value="Confronto direto" />
                     <br></br>
@@ -44,7 +44,7 @@
                 <h:outputText value="#{premiumBean.h2h.goals1}" />
                 <h:outputText value="#{premiumBean.h2h.goals2}" />
             </p:panelGrid>
-            <p:accordionPanel styleClass="p-mt-2 p-justify-center" rendered="#{premiumBean.isPremium()}">
+            <p:accordionPanel styleClass="p-mt-2 p-justify-center">
                 <p:tab title="Histórico de Partidas">
                     <p:repeat value="#{premiumBean.h2h.matches}" var="match" varStatus="status">
                         <p:outputPanel>
