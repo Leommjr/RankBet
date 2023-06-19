@@ -54,13 +54,21 @@ public class AuthenticationBean {
                     .flatMap(roleId -> roleService.getSubscription(roleId))
                     .orElse(null);
             if(roleModel != null){
+                String role = roleModel.getTypeName().replace("PREMIUM", "PREMIUM ");
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user",userModel);
-                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("profile",AccountType.valueOf(roleModel.getTypeName()));
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("profile",role);
             }
-            FacesContext.getCurrentInstance().getExternalContext().redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath());
+            FacesContext.getCurrentInstance().getExternalContext().redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()+"/security/index.xhtml");
         }else{
             FacesContext.getCurrentInstance().
-                    addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error Message", "Message Content"));
+                    addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error Message", "Invalid email or password"));
         }
+    }
+    public void logout() throws IOException {
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove( "user" );
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove( "profile" );
+        FacesContext.getCurrentInstance().addMessage( null, new FacesMessage( "Logout", "operação realizada com sucesso!" ) );
+        FacesContext.getCurrentInstance().getExternalContext().redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()+"/login.xhtml");
+
     }
 }

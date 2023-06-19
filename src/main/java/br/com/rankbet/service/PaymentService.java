@@ -49,7 +49,12 @@ public class PaymentService {
         client = ClientBuilder.newClient(clientConfig);
     }
 
+    public  String execute (String url, String body){
+        String token = stringRequest("https://api-m.sandbox.paypal.com/v1/oauth2/token","");
+        return stringRequest(url, body);
+    }
     public String stringRequest(String url, String body) {
+        init();
         target = client.target(url);
         if(url.contains(AUTH)){
             String responseAuth;

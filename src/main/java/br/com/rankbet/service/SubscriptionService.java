@@ -11,10 +11,7 @@ public class SubscriptionService {
 
 
     public SubscriptionModel getSubscription(long userId){
-
-
         return subscrption.findByUser(userId);
-
     }
 
     public List<SubscriptionModel> getUsersExpireds() {
@@ -29,6 +26,10 @@ public class SubscriptionService {
             //faces context
         }
         return false;
+    }
+
+    public void saveOrUpdate(SubscriptionModel m) throws BusinessException {
+        subscrption.saveOrUpdate(m);
     }
 
 }

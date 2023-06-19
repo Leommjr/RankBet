@@ -3,8 +3,8 @@ package br.com.rankbet.enums;
 public enum AccountType {
 
     FREE("FREE"),
-    PREMIUM1("PREMIUM1"),
-    PREMIUM2("PREMIUM2");
+    PREMIUM1("PREMIUM 1"),
+    PREMIUM2("PREMIUM 2");
 
     public String type;
 
@@ -12,7 +12,7 @@ public enum AccountType {
         this.type = type;
     }
 
-    public String getType(){
+    public static String getType(){
         return type;
     }
 

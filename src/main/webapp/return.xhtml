@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="../WEB-INF/layout.xhtml">
+	<ui:define name="content">
+		<link rel="StyleSheet" type="text/css" href="../resources/style.css" media="screen"></link>
+		<style>
+			body{
+				background-color: black;
+			}
+
+			.p-grid{
+				margin-bottom: 40px;
+			}
+			.card {
+				display: inline-block;
+				width: 200px;
+				border: 1px solid rgb(255, 196, 47)!important;
+				padding: 10px;
+				background-color: transparent!important;
+				border-radius: 5px;
+				margin-right: 10px;
+				cursor: pointer;
+				color: white!important;
+			}
+
+			.card.active {
+				background-color: rgb(255, 196, 47)!important;
+				border: solid 1px rgb(255, 196, 47)!important;
+				color: rgb(28, 28, 28)!important;
+			}
+
+			.card:hover {
+				background-color: rgb(69, 69, 69)!important;
+				border: solid 1px rgb(69, 69, 69)!important;
+				color: white!important;
+			}
+		</style>
+		<h:form styleClass="p-m-3 p-text-center form-black">
+			<f:metadata>
+				<f:viewParam name="paymentid" value="#{paymentBean.paymentId}"/>
+				<f:viewParam name="PayerID" value="#{paymentBean.paymentId}"/>
+			</f:metadata>
+			<h:outputText value="#{paymentBean.paymentId} + teste"></h:outputText>
+		</h:form>
+	</ui:define>
+</ui:composition>
