@@ -1,14 +1,14 @@
 package br.com.rankbet.enums;
 
-public enum AccountType2 {
+public enum AccountType {
 
     FREE("FREE"),
-    PREMIUM1("PREMIUM1"),
-    PREMIUM2("PREMIUM2");
+    PREMIUM1("PREMIUM 1"),
+    PREMIUM2("PREMIUM 2");
 
     public String type;
 
-    AccountType2(String type) {
+    AccountType(String type) {
         this.type = type;
     }
 
