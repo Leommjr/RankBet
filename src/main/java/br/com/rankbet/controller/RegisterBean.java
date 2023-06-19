@@ -39,8 +39,6 @@ public class RegisterBean {
 
     private PasswordUtil passwordUtil;
 
-    private PaymentBean paymentBean;
-
     private static RoleService roleService;
 
     private static SubscriptionService subscriptionService = new SubscriptionService();
@@ -50,7 +48,6 @@ public class RegisterBean {
     public void init() {
         userDTO= new UserDTO();
         userService = new UserService();
-        paymentBean = new PaymentBean();
     }
 
     public void submit(){
@@ -61,11 +58,11 @@ public class RegisterBean {
                 throw new IllegalArgumentException("As senhas não são correspondentes");
             }
             userService.registerUser(userDTO);
-            createSubscription(userDTO.getEmail());
-            paymentBean.reqPayment();
+            createSubscription(userDTO.getEmail(),account);
+            FacesContext.getCurrentInstance().getExternalContext()
+                    .redirect("login.xhtml");
         }catch (Exception exception){
             exception.printStackTrace();
-            //FACES CONTEXT
             FacesContext.getCurrentInstance().
                     addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error Message", "Message Content"));
         }
@@ -74,9 +71,9 @@ public class RegisterBean {
         return userDTO.getUserPassword().equalsIgnoreCase(newPasseword) ? true : false;
     }
 
-    private boolean createSubscription(String email){
+    private boolean createSubscription(String email,String account){
         try{
-            var freeRole = roleService.findRole(AccountType.FREE.getType());
+            var freeRole = roleService.findRole(AccountType.valueOf(account).toString());
             var user = userService.getUser(email);
             SubscriptionModel subscriptionModel = new SubscriptionModel();
             subscriptionModel.setPrice(0f);
