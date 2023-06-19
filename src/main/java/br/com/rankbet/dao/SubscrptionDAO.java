@@ -30,7 +30,8 @@ public class SubscrptionDAO extends BaseDao<SubscriptionModel> {
         predicateList.add(criteriaBuilder.equal(from.get("userId"), id));
         criteriaQuery.where(predicateList.toArray(new Predicate[0]));
         TypedQuery<SubscriptionModel> q = this.getSession().createQuery(criteriaQuery);
-        return q.getSingleResult();
+        List<SubscriptionModel> s = q.getResultList();
+        return s.get(s.size() -1);
     }
 
     public List<SubscriptionModel> findByExpiredAt(){

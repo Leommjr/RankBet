@@ -8,7 +8,6 @@ import br.com.rankbet.service.UserService;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
-import org.slf4j.Logger;
 
 import java.time.LocalDateTime;
 
@@ -21,7 +20,6 @@ public class FinalizeExpiredAccountPlansJob implements Job{
 
     private RoleService roleService;
 
-    private Logger logger;
 
     public FinalizeExpiredAccountPlansJob(){
         userService = new UserService();
@@ -32,7 +30,6 @@ public class FinalizeExpiredAccountPlansJob implements Job{
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        logger.info("Starting to run the simple downgrade job");
         var expiredsList =  subscriptionService.getUsersExpireds();
         var freeRole = roleService.findRole(AccountType.FREE.getType());
 
@@ -42,7 +39,5 @@ public class FinalizeExpiredAccountPlansJob implements Job{
             subscription.setUpdateAt(LocalDateTime.now());
             subscription.setPrice(0.0f);
         }
-
-        logger.info("End Execution");
     }
 }

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui" template="../WEB-INF/layout.xhtml">
+
+
+    <ui:define name="content">
+        <style>
+            body {
+                background-color: rgb(58, 58, 58);
+            }
+
+            .p-panelgrid {
+			    display: flex;
+			    justify-content: center;
+			    align-items: center;
+			    text-align: center;
+			}
+        </style>
+        <f:event type="postAddToView" listener="#{premiumBean.geth2h(param.time, param.team1)}" />
+        <h:form styleClass="p-m-3" id="myform">
+            <p:outputPanel rendered="#{premiumBean.isFreemium()}">
+                <h:outputText value="Área exclusiva para usuários Premium!" />
+            </p:outputPanel>
+            <p:panelGrid columns="3" styleClass="p-mt-2 p-justify-center" rendered="#{premiumBean.isPremium()}">
+                <f:facet name="header">
+                    <h:outputText value="Confronto direto" />
+                    <br></br>
+                    <h:outputText value="#{premiumBean.h2h.team1} vs #{premiumBean.h2h.team2}" />
+                </f:facet>
+                <h:outputText value="" />
+                <h:outputText value="#{premiumBean.h2h.team1}" />
+                <h:outputText value="#{premiumBean.h2h.team2}" />
+
+                <h:outputText value="Vitórias:" />
+                <h:outputText value="#{premiumBean.h2h.win1}" />
+                <h:outputText value="#{premiumBean.h2h.win2}" />
+
+                <h:outputText value="Empates:" />
+                <h:outputText value="#{premiumBean.h2h.draw}" />
+                <h:outputText value="#{premiumBean.h2h.draw}" />
+
+                <h:outputText value="Gols marcados:" />
+                <h:outputText value="#{premiumBean.h2h.goals1}" />
+                <h:outputText value="#{premiumBean.h2h.goals2}" />
+            </p:panelGrid>
+            <p:accordionPanel styleClass="p-mt-2 p-justify-center" rendered="#{premiumBean.isPremium()}">
+                <p:tab title="Histórico de Partidas">
+                    <p:repeat value="#{premiumBean.h2h.matches}" var="match" varStatus="status">
+                        <p:outputPanel>
+                            <h:outputText value="Partida #{status.index + 1}:" />
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <h:outputText value="#{premiumBean.h2h.team1}: #{match.score1}" />
+                                <h:outputText value="#{premiumBean.h2h.team2}: #{match.score2}" />
+                            </h:panelGrid>
+                        </p:outputPanel>
+                    </p:repeat>
+                </p:tab>
+            </p:accordionPanel>
+
+        </h:form>
+    </ui:define>
+</ui:composition>

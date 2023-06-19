@@ -45,8 +45,9 @@ public class AuthenticationFilter implements Filter {
         if ( dummyUser == null ) {
 
             if (((jakarta.servlet.http.HttpServletRequest) request).getServletPath().contains("cadastro")) {
-                RequestDispatcher rd = request.getRequestDispatcher("/cadastro.xhtml");
-                rd.forward(request,response);
+//                RequestDispatcher rd = request.getRequestDispatcher("/cadastro.xhtml");
+//                rd.forward(request,response);
+
             }
             RequestDispatcher rd = request.getRequestDispatcher("/login.xhtml");
             rd.forward(request,response);

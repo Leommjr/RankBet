@@ -1,7 +1,5 @@
 package br.com.rankbet.controller;
 
-import br.com.rankbet.enums.AccountType;
-import br.com.rankbet.model.UserModel;
 import br.com.rankbet.model.game.Game;
 import br.com.rankbet.service.LiveGamesService;
 import jakarta.faces.application.FacesMessage;
@@ -23,16 +21,18 @@ public class OddsBean implements java.io.Serializable {
 
     private List<Game> odds;
 
-    private AccountType accountType;
+    private String accountType;
 
     public void liveOdds(String id) {
         try {
-            accountType = (AccountType) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("profile");
+            accountType = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("profile");
             odds = liveGamesService.getAllLiveOdds(id);
-            if(AccountType.valueOf("FREE") == accountType){
+            if(accountType.equals("FREE")){
                 if (!odds.isEmpty()) {
                     odds.get(0).setWin1(0);
                     odds.get(0).setWin2(0);
+                    odds.get(0).setHref("updateUserData.xhtml");
+                    odds.get(0).setBetName("Odds exclusiva para usuarios PREMIUM");
                 }
             }
         } catch (Exception e) {
@@ -57,12 +57,12 @@ public class OddsBean implements java.io.Serializable {
         return null;
     }
 
-    public AccountType getAccountType() {
+    public String getAccountType() {
         return accountType;
     }
 
     public boolean isPremium() {
-        return accountType == AccountType.PREMIUM1 || accountType == AccountType.PREMIUM2;
+        return !accountType.equals("FREE");
     }
 
 
