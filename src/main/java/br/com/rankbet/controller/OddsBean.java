@@ -27,15 +27,15 @@ public class OddsBean implements java.io.Serializable {
 
     public void liveOdds(String id) {
         try {
-            accountType = (AccountType) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("profile");
+            //accountType = (AccountType) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("profile");
             odds = liveGamesService.getAllLiveOdds(id);
-            if(AccountType.valueOf("FREE") == accountType){
+            /*if(AccountType.valueOf("FREE") == accountType){
                 if (!odds.isEmpty()) {
                     odds.get(0).setWin1(0);
                     odds.get(0).setWin2(0);
                     odds.get(0).setBetName("Odds exclusiva para usuários PREMIUM");
                 }
-            }
+            }*/
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage("myform", new FacesMessage("Erro ao extrair dados da API"));
         }
