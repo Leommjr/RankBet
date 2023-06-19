@@ -60,7 +60,7 @@ public class AuthenticationBean {
             FacesContext.getCurrentInstance().getExternalContext().redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()+"/security/index.xhtml");
         }else{
             FacesContext.getCurrentInstance().
-                    addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error Message", "Message Content"));
+                    addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error Message", "Invalid email or password"));
         }
     }
     public void logout() throws IOException {
