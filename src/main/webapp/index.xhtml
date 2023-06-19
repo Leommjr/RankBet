@@ -54,7 +54,7 @@
 			    text-align: center;
 			    margin-bottom: 100px;
 			}
-
+			
 			.p-panelgrid {
 			    display: flex;
 			    justify-content: center;
@@ -121,7 +121,7 @@
 					width: 10%;
 				}
 			}
-
+						
 			@media screen and (min-width:281px) and (max-width:376px){
 
 				.ui-card-body{
@@ -234,7 +234,7 @@
 						<f:facet name="subtitle">
 							<p:outputLabel value="#{game.title} - #{game.team1} x #{game.team2}" styleClass="p-mt-0 p-mb-2" class="text-white" />
 						</f:facet>
-
+					
 						<h:panelGrid columns="2" cellspacing="2" columnClasses="col-md-6 col-md-6" styleClass="p-mt-2 p-justify-center p-panelgrid">
 							<p:commandButton value="#{game.team1}"
 								style="width: 150px; height: 80px; overflow: hidden;"
@@ -249,3 +249,4 @@
 			</p:dataScroller>
 		</h:form>
 	</ui:define>
+</ui:composition>
