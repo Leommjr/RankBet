@@ -1,16 +1,20 @@
 package br.com.rankbet.controller;
 
-import br.com.rankbet.model.UserModel;
+import br.com.rankbet.enums.AccountType;
+import br.com.rankbet.model.SubscriptionModel;
 import br.com.rankbet.model.dto.UserDTO;
-import br.com.rankbet.service.LoginService;
 import br.com.rankbet.service.RoleService;
+import br.com.rankbet.service.SubscriptionService;
 import br.com.rankbet.service.UserService;
+import br.com.rankbet.utils.PasswordUtil;
 import jakarta.annotation.ManagedBean;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
 
-import java.lang.reflect.InvocationTargetException;
+import java.time.LocalDateTime;
 
 @Named
 @RequestScoped
@@ -29,15 +33,80 @@ public class RegisterBean {
 
     private UserService userService;
 
+    private String newPasseword;
+
+    private String account;
+
+    private PasswordUtil passwordUtil;
+
+    private PaymentBean paymentBean;
+
+    private static RoleService roleService;
+
+    private static SubscriptionService subscriptionService = new SubscriptionService();
+
+
     @PostConstruct
     public void init() {
         userDTO= new UserDTO();
         userService = new UserService();
+
     }
 
-    public String submit() throws InvocationTargetException, IllegalAccessException {
-        System.out.println(userDTO);
-        return (userService.registerUser(userDTO)) ? "sucess" : "error";
+    public void submit(){
+        try{
+            if(validatePassword()){
+                userDTO.setUserPassword(passwordUtil.generateMD5(newPasseword));
+            }else{
+                throw new IllegalArgumentException("As senhas não são correspondentes");
+            }
+            userService.registerUser(userDTO);
+            createSubscription(userDTO.getEmail());
+            paymentBean.reqPayment();
+        }catch (Exception exception){
+            //FACES CONTEXT
+            FacesContext.getCurrentInstance().
+                    addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error Message", "Message Content"));
+        }
+    }
+    private boolean validatePassword(){
+        return userDTO.getUserPassword().equalsIgnoreCase(userDTO.getUserPassword()) ? true : false;
     }
 
+    private boolean createSubscription(String email){
+        try{
+            var freeRole = roleService.findRole(AccountType.FREE.getType());
+            var user = userService.getUser(email);
+            SubscriptionModel subscriptionModel = new SubscriptionModel();
+            subscriptionModel.setPrice(0f);
+            subscriptionModel.setCreateAt(LocalDateTime.now());
+            subscriptionModel.setUpdateAt(LocalDateTime.now());
+            subscriptionModel.setRoleId(freeRole.getId());
+            subscriptionModel.setExpiresAt(null);
+            subscriptionModel.setUserId(user.getId());
+            subscriptionService.save(subscriptionModel);
+            return true;
+        }catch (Exception exception){
+            FacesContext.getCurrentInstance().
+                    addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error Message", "Message Content"));
+        }
+        return false;
+    }
+
+    public String getNewPasseword() {
+        return newPasseword;
+    }
+
+    public void setNewPasseword(String newPasseword) {
+        this.newPasseword = newPasseword;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+
+    public void setAccount(String account) {
+        this.account = account;
+    }
 }

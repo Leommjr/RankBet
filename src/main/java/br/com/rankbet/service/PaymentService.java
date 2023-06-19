@@ -39,7 +39,7 @@ public class PaymentService {
 
     private final String BEARER = "Bearer ";
 
-    public String token;
+    private String token;
 
     @PostConstruct
     public void init() {
@@ -50,11 +50,6 @@ public class PaymentService {
     }
 
     public String stringRequest(String url, String body) {
-        ClientConfig clientConfig = new ClientConfig()
-                .property(ClientProperties.CONNECT_TIMEOUT, 5000)
-                .property(ClientProperties.READ_TIMEOUT, 10000);
-        client = ClientBuilder.newClient(clientConfig);
-
         target = client.target(url);
         if(url.contains(AUTH)){
             String responseAuth;
