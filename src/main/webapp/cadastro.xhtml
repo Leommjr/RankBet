@@ -148,15 +148,12 @@
 				</div>
 			</div>
 
-			<div>
-				<p:selectOneRadio id="option" layout="custom" value="#{registerBean.account}">
-					<f:selectItem itemLabel="Free" itemValue="free" />
-					<f:selectItem itemLabel="Premium 1" itemValue="premium1" />
-					<f:selectItem itemLabel="Premium 2" itemValue="premium2" />
-
-					<p:ajax id="option" event="change" update="selectedOptionPanel" />
-				</p:selectOneRadio>
-			</div>
+			<h5 class="mt-0">Basic</h5>
+			<p:selectOneRadio id="console" value="#{registerBean.account}">
+				<f:selectItem itemLabel="Free" itemValue="Free"/>
+				<f:selectItem itemLabel="Premium 1" itemValue="premium1"/>
+				<f:selectItem itemLabel="Premium 2" itemValue="premium2"/>
+			</p:selectOneRadio>
 
 			<div class="p-grid text-left">
 				<div class="p-col-6">
