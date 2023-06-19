@@ -11,10 +11,7 @@ public class SubscriptionService {
 
 
     public SubscriptionModel getSubscription(long userId){
-
-
         return subscrption.findByUser(userId);
-
     }
 
     public List<SubscriptionModel> getUsersExpireds() {

@@ -11,7 +11,6 @@ import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
-import org.primefaces.shaded.json.JSONObject;
 
 import java.io.IOException;
 import java.util.Map;
