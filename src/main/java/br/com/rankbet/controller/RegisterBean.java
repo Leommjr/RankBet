@@ -50,7 +50,7 @@ public class RegisterBean {
     public void init() {
         userDTO= new UserDTO();
         userService = new UserService();
-
+        paymentBean = new PaymentBean();
     }
 
     public void submit(){
@@ -64,13 +64,14 @@ public class RegisterBean {
             createSubscription(userDTO.getEmail());
             paymentBean.reqPayment();
         }catch (Exception exception){
+            exception.printStackTrace();
             //FACES CONTEXT
             FacesContext.getCurrentInstance().
                     addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error Message", "Message Content"));
         }
     }
     private boolean validatePassword(){
-        return userDTO.getUserPassword().equalsIgnoreCase(userDTO.getUserPassword()) ? true : false;
+        return userDTO.getUserPassword().equalsIgnoreCase(newPasseword) ? true : false;
     }
 
     private boolean createSubscription(String email){

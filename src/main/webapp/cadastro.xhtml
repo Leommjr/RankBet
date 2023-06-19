@@ -142,11 +142,22 @@
 				</div>
 				<div class="p-col-6 m-2">
 					<h6 class="text-white text-left">Confirme a Senha</h6>
-					<p:password id="pwd2" value="#{userDTO.doublePassword}" style="width: 22vw;" required="true" feedback="true"
+					<p:password id="pwd2" value="#{registerBean.newPasseword}" style="width: 22vw;" required="true" feedback="true"
 					promptLabel="Por favor, digite a senha" weakLabel="Senha Fraca"
 					goodLabel="Senha Moderada" strongLabel="Senha Forte"/>
 				</div>
 			</div>
+
+			<div>
+				<p:selectOneRadio id="option" layout="custom" value="#{registerBean.account}">
+					<f:selectItem itemLabel="Free" itemValue="free" />
+					<f:selectItem itemLabel="Premium 1" itemValue="premium1" />
+					<f:selectItem itemLabel="Premium 2" itemValue="premium2" />
+
+					<p:ajax id="option" event="change" update="selectedOptionPanel" />
+				</p:selectOneRadio>
+			</div>
+
 			<div class="p-grid text-left">
 				<div class="p-col-6">
 					<p:commandButton update="@form" value="Cadastrar" actionListener="#{registerBean.submit}"
