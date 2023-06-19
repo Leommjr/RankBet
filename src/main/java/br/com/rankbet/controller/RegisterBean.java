@@ -26,7 +26,7 @@ public class RegisterBean {
     }
 
     private UserDTO userDTO;
-
+    
     private UserService userService;
 
     @PostConstruct
