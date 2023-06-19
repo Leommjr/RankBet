@@ -56,8 +56,10 @@ public class GamesBean {
 
     public void liveGames() {
         try {
+            liveGamesService.refreshLiveGames();
             games = liveGamesService.getAllLiveGames();
             filteredGames = new ArrayList<>(games);
+
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage("myform", new FacesMessage("Erro ao extrair dados da API"));
         }
@@ -65,7 +67,7 @@ public class GamesBean {
 
     public void selectTeam(Game game, String team) throws IOException {
         FacesContext.getCurrentInstance().getExternalContext()
-                .redirect("security/team.xhtml?id="+game.getId()+"&time="+game.getTime()+"&team="+team);
+                .redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()+"/security/team.xhtml?id="+game.getId()+"&time="+game.getTime()+"&team="+team);
     }
 
     public void refreshLiveGames() {

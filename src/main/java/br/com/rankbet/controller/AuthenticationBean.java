@@ -54,8 +54,9 @@ public class AuthenticationBean {
                     .flatMap(roleId -> roleService.getSubscription(roleId))
                     .orElse(null);
             if(roleModel != null){
+                String role = roleModel.getTypeName().replace("PREMIUM", "PREMIUM ");
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user",userModel);
-                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("profile",AccountType.valueOf(roleModel.getTypeName()));
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("profile",role);
             }
             FacesContext.getCurrentInstance().getExternalContext().redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()+"/security/index.xhtml");
         }else{

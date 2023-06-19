@@ -31,4 +31,8 @@ public class SubscriptionService {
         return false;
     }
 
+    public void saveOrUpdate(SubscriptionModel m) throws BusinessException {
+        subscrption.saveOrUpdate(m);
+    }
+
 }
