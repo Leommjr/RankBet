@@ -33,6 +33,7 @@ public class OddsBean implements java.io.Serializable {
                 if (!odds.isEmpty()) {
                     odds.get(0).setWin1(0);
                     odds.get(0).setWin2(0);
+                    odds.get(0).setBetName("Odds exclusiva para usuários PREMIUM");
                 }
             }
         } catch (Exception e) {
