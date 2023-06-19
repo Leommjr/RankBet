@@ -31,7 +31,7 @@ public class OddsBean implements java.io.Serializable {
                 if (!odds.isEmpty()) {
                     odds.get(0).setWin1(0);
                     odds.get(0).setWin2(0);
-                    odds.get(0).setBetName("Odds exclusiva para usuários PREMIUM");
+                    odds.get(0).setBetName("Odds exclusiva para usuarios PREMIUM");
                 }
             }
         } catch (Exception e) {
@@ -61,7 +61,7 @@ public class OddsBean implements java.io.Serializable {
     }
 
     public boolean isPremium() {
-        return accountType.equals("PREMIUM1") || accountType.equals("PREMIUM2");
+        return accountType.equals("PREMIUM 1") || accountType.equals("PREMIUM 2");
     }
 
 

@@ -130,7 +130,7 @@
             <p:dataScroller id="liveOddsTable" value="#{oddsBean.odds}"
                             var="odd" varStatus="status" chunkSize="30" styleClass="p-liveGamesTable">
 				<f:facet name="header">
-					<p:outputLabel value="#{odd.team1} x #{odd.team2}" styleClass="p-mt-0 p-mb-2" class="text-white" />
+					<p:outputLabel value="#{param.team1} x #{param.team2}" styleClass="p-mt-0 p-mb-2" class="text-white" />
 				</f:facet>
                 <p:outputPanel styleClass="odds-ranking container">
                     <div class="odds-bar medal-silver">
