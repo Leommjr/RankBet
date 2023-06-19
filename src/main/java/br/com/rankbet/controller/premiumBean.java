@@ -24,7 +24,7 @@ public class premiumBean implements java.io.Serializable {
         try {
             accountType = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("profile");
             h2h = PremiumService.getH2h(time, team1);
-            if("FREE" ==  accountType|| "PREMIUM1" == accountType){
+            if("FREE" ==  accountType){
                 if (h2h != null) {
                     h2h.setWin1(0);
                     h2h.setWin2(0);
@@ -51,7 +51,7 @@ public class premiumBean implements java.io.Serializable {
     }
 
     public boolean isPremium() {
-        return accountType.equals("PREMIUM1") || accountType.equals("PREMIUM2");
+        return !accountType.equals("FREE");
     }
 
     public boolean isFreemium() {
