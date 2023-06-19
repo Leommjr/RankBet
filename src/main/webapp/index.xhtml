@@ -4,8 +4,6 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui" template="WEB-INF/layout.xhtml">
-
-
 	<ui:define name="content">
 		<style>
 			body{
@@ -56,7 +54,7 @@
 			    text-align: center;
 			    margin-bottom: 100px;
 			}
-			
+
 			.p-panelgrid {
 			    display: flex;
 			    justify-content: center;
@@ -123,7 +121,7 @@
 					width: 10%;
 				}
 			}
-						
+
 			@media screen and (min-width:281px) and (max-width:376px){
 
 				.ui-card-body{
@@ -205,41 +203,49 @@
 
 </style>
 		<f:event type="postAddToView" listener="#{gamesBean.liveGames}" />
-		<h:form styleClass="p-m-3" id="myform">
-			<h:panelGrid columns="2" columnClasses="p-col-3,p-col-9">
-				<h:outputText value="Search:" styleClass="p-mr-2" />
-				<p:inputText value="#{gamesBean.searchTerm}" class="p-inputtext-sm">
-					<p:ajax event="keyup" listener="#{gamesBean.filterGames}"
-						update="liveGamesTable" />
-				</p:inputText>
-			</h:panelGrid>
+		<h:form styleClass="p-m-3 p-text-center">
+			<div class="background-search align-middle justify-content-center">
+				<h2 class="text-white text-center">Na RankBet você encontra as melhores ODDs <!--chances de vitória--> nos principais mercados de apostas esportivas online em tempo real!</h2>
+				<div class="justify-content-center text-center">
+					<span class="ui-input-icon-left p-2">
+						<i class="pi pi-search ml-1" />
+						<p:inputText size="50" value="#{gamesBean.searchTerm}" placeholder="Procurar jogos..." class="p-inputtext-sm" styleClass="p-text-center">
+							<p:ajax event="keyup" listener="#{gamesBean.filterGames}"
+								update="liveGamesTable" />
+						</p:inputText>
+					</span>
+				</div>	
+			</div>	
 			<p:dataScroller id="liveGamesTable" value="#{gamesBean.filteredGames}"
-				var="game" chunkSize="10" >
-				<f:facet name="header">
-					<p:outputPanel>
-						<p:outputLabel value="Games" styleClass="p-mr-2" />
+				var="game" chunkSize="10" styleClass="p-liveGamesTable" class="container mt-2">
+				<f:facet name="header" class="p-panelgrid ui-corner-all">
+					<p:outputPanel class="p-panelgrid">
+						<p:outputLabel value="Live Games" styleClass="p-mr-2" />
 						<p:spacer width="10" />
 						<p:graphicImage name="images/live.gif" styleClass="p-mr-2" width="30" height="30" />
 						<p:spacer width="10" />
 						<p:commandButton icon="pi pi-refresh" styleClass="p-button-rounded p-button-success p-mr-2"
-										 action="#{gamesBean.refreshLiveGames}" update="liveGamesTable" />
+									 action="#{gamesBean.refreshLiveGames}" update="liveGamesTable" />
 					</p:outputPanel>
 				</f:facet>
-				<p:outputPanel styleClass="p-grid">
-					<h:panelGrid columns="1" styleClass="p-col-12 p-text-center">
-						<p:outputLabel value="#{game.title}" styleClass="p-mt-0 p-mb-2" />
-					</h:panelGrid>
-					<h:panelGrid columns="2" columnClasses="p-col-6 p-col-6" styleClass="p-mt-2 p-justify-center">
-						<p:commandButton value="#{game.team1}"
-							style="width: 150px; height: 100px; overflow: hidden;"
-							action="#{gamesBean.selectTeam(game, game.team1)}" />
-						<p:commandButton value="#{game.team2}"
-							style="width: 150px; height: 100px; overflow: hidden;"
-							action="#{gamesBean.selectTeam(game, game.team2)}" />
-					</h:panelGrid>
-				</p:outputPanel>
+				<h:panelGrid columns="2" cellspacing="3" columnClasses="col-md-6 col-md-6" styleClass="p-mt-2" class="borderNone">
+					<p:outputPanel styleClass="p-grid">
+					<p:card>
+						<f:facet name="subtitle">
+							<p:outputLabel value="#{game.title} - #{game.team1} x #{game.team2}" styleClass="p-mt-0 p-mb-2" class="text-white" />
+						</f:facet>
+
+						<h:panelGrid columns="2" cellspacing="2" columnClasses="col-md-6 col-md-6" styleClass="p-mt-2 p-justify-center p-panelgrid">
+							<p:commandButton value="#{game.team1}"
+								style="width: 150px; height: 80px; overflow: hidden;"
+								action="#{gamesBean.selectTeam(game, game.team1)}" styleClass="p-team-btn" />
+							<p:commandButton value="#{game.team2}"
+								style="width: 150px; height: 80px; overflow: hidden;" styleClass="p-team-btn"
+								action="#{gamesBean.selectTeam(game, game.team2)}" />
+						</h:panelGrid>
+					</p:card>
+					</p:outputPanel>
+				</h:panelGrid>
 			</p:dataScroller>
-			<h:message for="liveGamesTable" />
 		</h:form>
 	</ui:define>
-</ui:composition>
