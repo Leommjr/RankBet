@@ -103,7 +103,6 @@ public class RegisterBean {
         return account;
     }
 
-
     public void setAccount(String account) {
         this.account = account;
     }

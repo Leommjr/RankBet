@@ -133,20 +133,16 @@
 						</p:inputText>-->
 				</div>
 			</div>
-			<div class="p-grid">
-				<div class="p-col-6 m-2">
-					<h6 class="text-white text-left">Senha</h6>
-					<p:password style="width: 22vw;" value="#{registerBean.userDTO.userPassword}" required="true"
+
+			<h6 class="text-white text-left">Senha</h6>
+			<p:password style="width: 22vw;" value="#{registerBean.userDTO.userPassword}" required="true"
 						feedback="true" promptLabel="Por favor, digite a senha" weakLabel="Senha Fraca"
 						goodLabel="Senha Moderada" match="pw2" strongLabel="Senha Forte" />
-				</div>
-				<div class="p-col-6 m-2">
-					<h6 class="text-white text-left">Confirme a Senha</h6>
-					<p:password id="pwd2" value="#{registerBean.newPasseword}" style="width: 22vw;" required="true" feedback="true"
-					promptLabel="Por favor, digite a senha" weakLabel="Senha Fraca"
-					goodLabel="Senha Moderada" strongLabel="Senha Forte"/>
-				</div>
-			</div>
+
+			<h6 class="text-white text-left">Confirme a Senha</h6>
+			<p:password id="pw2" value="#{registerBean.newPasseword}" style="width: 22vw;" required="true" feedback="true"
+						promptLabel="Por favor, digite a senha" weakLabel="Senha Fraca"
+						goodLabel="Senha Moderada" strongLabel="Senha Forte"/>
 
 			<h5 class="mt-0">Basic</h5>
 			<p:selectOneRadio id="console" value="#{registerBean.account}">
