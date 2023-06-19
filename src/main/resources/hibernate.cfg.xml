@@ -8,8 +8,10 @@
 
         <!-- Gaia inicio -->
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">root</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dbname</property>
+
+        <property name="hibernate.connection.password">teste12345</property>
+
+        <property name="hibernate.connection.url">jdbc:mysql://mysql:3306/mydb?allowPublicKeyRetrieval=true&amp;useSSL=false</property>
 
 
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
