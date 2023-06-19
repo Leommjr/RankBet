@@ -207,17 +207,12 @@
         <h:form styleClass="p-m-3" id="myform">
 			<p:linkButton outcome="premium" value="Área Premium"
 								style="width: 150px; height: 50px; overflow: hidden;"
-								styleClass="p-team-btn">
+								styleClass="p-team-btn" rendered="#{oddsBean.isPremium()}" >
 				<f:param name="time" value="#{param.time}" />
 				<f:param name="team1" value="#{param.team}" />
 			</p:linkButton>
             <p:dataScroller id="liveOddsTable" value="#{oddsBean.odds}"
                             var="odd" chunkSize="30" styleClass="p-liveGamesTable">
-				<f:facet name="header">
-					<p:outputPanel>
-						<p:outputLabel value="Odds" styleClass="p-mr-2" />
-					</p:outputPanel>
-				</f:facet>
                 <p:outputPanel styleClass="p-grid">
                     <p:card>
 						<f:facet name="subtitle">

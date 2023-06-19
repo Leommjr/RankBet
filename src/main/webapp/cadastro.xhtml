@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
@@ -10,135 +8,153 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<h:outputStylesheet name="bootstrap/theme.css" />
-    <meta charset="UTF-8"/>
-    <title>RankBet</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="resources/style.css" />
+	<meta charset="UTF-8" />
+	<title>RankBet</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 	<style>
-		body{
+		body {
 			background-color: black;
 		}
 
-		.p-grid{
+		.p-grid {
 			margin-bottom: 40px;
 		}
 
 		.card {
 			display: inline-block;
 			width: 200px;
-			border: 1px solid rgb(255, 196, 47)!important;
+			border: 1px solid rgb(255, 196, 47) !important;
 			padding: 10px;
-			background-color: transparent!important;
+			background-color: transparent !important;
 			border-radius: 5px;
 			margin-right: 10px;
 			cursor: pointer;
-			color: white!important;
+			color: white !important;
 		}
 
 		.card.active {
-			background-color: rgb(255, 196, 47)!important;
-			border: solid 1px rgb(255, 196, 47)!important;
-			color: rgb(28, 28, 28)!important;
+			background-color: rgb(255, 196, 47) !important;
+			border: solid 1px rgb(255, 196, 47) !important;
+			color: rgb(28, 28, 28) !important;
 		}
 
 		.card:hover {
-			background-color: rgb(69, 69, 69)!important;
-			border: solid 1px rgb(69, 69, 69)!important;
-			color: white!important;
+			background-color: rgb(69, 69, 69) !important;
+			border: solid 1px rgb(69, 69, 69) !important;
+			color: white !important;
+		}
+
+		.navbar {
+			background-color: black;
+		}
+
+		.navbar-brand {
+			margin: 0%;
+		}
+
+		.title-yellow {
+			color: rgb(255, 196, 47) !important;
+		}
+
+		.p-link:hover {
+			color: white !important;
+		}
+
+		.form-black {
+			background-color: black;
+		}
+
+		.cd-block {
+			background-color: black;
+			width: 50vw;
+		}
+
+		.p-grid {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			margin-bottom: 40px;
+		}
+
+		.ui-button {
+			background-color: rgb(255, 196, 47) !important;
+			color: black !important;
+			border: none !important;
+		}
+
+		.ui-button:hover {
+			background-color: rgb(255, 202, 132) !important;
+			color: black !important;
+			border: none !important;
 		}
 	</style>
 </h:head>
 <h:body>
-		<nav class="navbar navbar-expand-md justify-content-between">
-			<p:link href="login.xhtml" value="Voltar Para o Login" class="title-yellow p-link"></p:link>
-			<p:graphicImage name="images/logo-rankbet.jpeg" class="navbar-brand img-fluid" width="160" height="auto"/>
-			<!--<p:selectCheckboxMenu id="multiple" value="#{checkboxView.selectedCities2}" label="Cities" style="min-width: 15rem"
+	<nav class="navbar navbar-expand-md justify-content-between">
+		<p:link href="login.xhtml" value="Voltar Para o Login" class="title-yellow p-link"></p:link>
+		<p:graphicImage name="images/logo-rankbet.jpeg" class="navbar-brand img-fluid" width="160" height="auto" />
+		<!--<p:selectCheckboxMenu id="multiple" value="#{checkboxView.selectedCities2}" label="Cities" style="min-width: 15rem"
 									multiple="true" filter="true" filterMatchMode="startsWith" panelStyle="width: 30rem" scrollHeight="250"
 									emptyLabel="Please select..." updateLabel="true">
 				<p:ajax event="itemUnselect" listener="#{checkboxView.onItemUnselect}"/>
 				<f:selectItems value="#{checkboxView.cities}"/>
 			</p:selectCheckboxMenu>-->
-		</nav>
-		<h:form styleClass="p-m-3 p-text-center form-black">
-			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" redisplay="false" />
-			<div class="container cd-block justify-content-center">
-				<h1 class="title-yellow mb-3">Cadastre-se</h1>
-				<h6 class="text-white text-justify mb-5">Cadastre-se agora mesmo e aproveite a adrenalina de acompanhar jogos ao vivo, encontrar as melhores ODDs disponíveis nas casas de apostas e desafiar sua intuição, além de se divertir muito.</h6>
-				<div class="p-grid">
-					<div class="p-col-6 m-2">
-						<h6 class="text-white text-left">Primeiro Nome</h6>
-						<p:inputText required="true" style="width: 22vw;" value="#{registerBean.userDTO.firstName}"/>
-					</div>
-					<div class="p-col-6 m-2">
-						<h6 class="text-white text-left">Último Nome</h6>
-						<p:inputText required="true" style="width: 22vw;" value="#{registerBean.userDTO.lastName}"/>
-					</div>
+	</nav>
+	<h:form styleClass="p-m-3 p-text-center form-black">
+		<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" redisplay="false" />
+		<div class="container cd-block justify-content-center">
+			<h1 class="title-yellow mb-3">Cadastre-se</h1>
+			<h6 class="text-white text-justify mb-5">Cadastre-se agora mesmo e aproveite a adrenalina de acompanhar
+				jogos ao vivo, encontrar as melhores ODDs disponíveis nas casas de apostas e desafiar sua intuição, além
+				de se divertir muito.</h6>
+			<div class="p-grid">
+				<div class="p-col-6 m-2">
+					<h6 class="text-white text-left">Primeiro Nome</h6>
+					<p:inputText required="true" style="width: 22vw;" value="#{registerBean.userDTO.firstName}" />
 				</div>
-				<div class="p-grid">
-					<div class="p-col-12">
-						<h6 class="text-white text-left">Nome de Usuário</h6>
-						<p:inputText required="true" style="width: 45vw;" value="#{registerBean.userDTO.userName}"/>
-					</div>
-				</div>
-				<div class="p-grid">
-					<div class="p-col-12">
-						<h6 class="text-white text-left">E-mail</h6>
-						<p:inputText id="email" required="true" style="width: 45vw;" value="#{registerBean.userDTO.email}" validator="#{usuario.validateEmail}"/>
-							<!--<f:validateRegex pattern="^[\w\-]+(\.[\w\-]+)*@[\w\-]+(\.[\w\-]+)*(\.[a-zA-Z]{2,})$" />
-						</p:inputText>-->
-					</div>
-				</div>
-				<div class="p-grid">
-					<div class="p-col-6 m-2">
-						<h6 class="text-white text-left">Senha</h6>
-						<p:password id="pwd1" match="pwd2" style="width: 22vw;" value="#{registerBean.userDTO.userPassword}" required="true" feedback="true"
-						promptLabel="Por favor, digite a senha" weakLabel="Senha Fraca"
-						goodLabel="Senha Moderada" strongLabel="Senha Forte" />
-					</div>
-					<div class="p-col-6 m-2">
-						<h6 class="text-white text-left">Confirme a Senha</h6>
-						<p:password id="pwd2" value="#{registerBean.newPasseword}" style="width: 22vw;" required="true" feedback="true"
-						promptLabel="Por favor, digite a senha" weakLabel="Senha Fraca"
-						goodLabel="Senha Moderada" strongLabel="Senha Forte"/>
-					</div>
-				</div>
-				
-				<div>
-					<p:selectOneRadio id="option" layout="custom" value="#{registerBean.account}">
-						<f:selectItem itemLabel="Free" itemValue="free" />
-						<f:selectItem itemLabel="Premium 1" itemValue="premium1" />
-						<f:selectItem itemLabel="Premium 2" itemValue="premium2" />
-
-						<p:ajax event="change" update="selectedOptionPanel" />
-					</p:selectOneRadio>
-
-					<h:panelGroup id="selectedOptionPanel" class="p-grid">
-						<div class="card p-col-4 #{registerBean.account eq 'free' ? 'active' : ''}">
-							<h2 class="p-1">Free</h2>
-							<p>Preço: R$50</p>
-							<p>Breve descrição do plano Free.</p>
-						</div>
-
-						<div class="card p-col-4 #{registerBean.account eq 'premium1' ? 'active' : ''}">
-							<h2 class="p-1">Premium 1</h2>
-							<p>Preço: R$50</p>
-							<p>Breve descrição do plano Premium 1.</p>
-						</div>
-
-						<div class="card p-col-4 #{registerBean.account eq 'premium2' ? 'active' : ''}">
-							<h2 class="p-1">Premium 2</h2>
-							<p>Preço: R$50</p>
-							<p>Breve descrição do plano Premium 2.</p>
-						</div>
-					</h:panelGroup>
-				</div>
-				
-				<div class="p-grid text-left">
-					<div class="p-col-6">
-						<p:commandButton update="@form" actionListener="#{registerBean.submit}" value="Cadastrar" validateClient="true" class="ui-button"/>
-					</div>  
+				<div class="p-col-6 m-2">
+					<h6 class="text-white text-left">Último Nome</h6>
+					<p:inputText required="true" style="width: 22vw;" value="#{registerBean.userDTO.lastName}" />
 				</div>
 			</div>
-		</h:form>
-	</h:body>
+			<div class="p-grid">
+				<div class="p-col-12">
+					<h6 class="text-white text-left">Nome de Usuário</h6>
+					<p:inputText required="true" style="width: 45vw;" value="#{registerBean.userDTO.userName}" />
+				</div>
+			</div>
+			<div class="p-grid">
+				<div class="p-col-12">
+					<h6 class="text-white text-left">E-mail</h6>
+					<p:inputText id="email" required="true" style="width: 45vw;"
+						value="#{registerBean.userDTO.email}" />
+					<!--<f:validateRegex pattern="^[\w\-]+(\.[\w\-]+)*@[\w\-]+(\.[\w\-]+)*(\.[a-zA-Z]{2,})$" />
+						</p:inputText>-->
+				</div>
+			</div>
+			<div class="p-grid">
+				<div class="p-col-6 m-2">
+					<h6 class="text-white text-left">Senha</h6>
+					<p:password style="width: 22vw;" value="#{registerBean.userDTO.userPassword}" required="true"
+						feedback="true" promptLabel="Por favor, digite a senha" weakLabel="Senha Fraca"
+						goodLabel="Senha Moderada" strongLabel="Senha Forte" />
+				</div>
+				<div class="p-col-6 m-2">
+					<h6 class="text-white text-left">Confirme a Senha</h6>
+					<p:password id="pwd2" value="#{userDTO.doublePassword}" style="width: 22vw;" required="true" feedback="true"
+					promptLabel="Por favor, digite a senha" weakLabel="Senha Fraca"
+					goodLabel="Senha Moderada" strongLabel="Senha Forte"/>
+				</div>
+			</div>
+			<div class="p-grid text-left">
+				<div class="p-col-6">
+					<p:commandButton update="@form" value="Cadastrar" actionListener="#{registerBean.submit}"
+						validateClient="true" class="ui-button" />
+				</div>
+			</div>
+		</div>
+	</h:form>
+</h:body>
+
 </html>
