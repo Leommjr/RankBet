@@ -1,6 +1,6 @@
 package br.com.rankbet.controller;
 
-import br.com.rankbet.enums.AccountType;
+import br.com.rankbet.enums.AccountType2;
 import br.com.rankbet.model.UserModel;
 import br.com.rankbet.model.game.Game;
 import br.com.rankbet.service.LiveGamesService;
@@ -23,19 +23,19 @@ public class OddsBean implements java.io.Serializable {
 
     private List<Game> odds;
 
-    private AccountType accountType;
+    private AccountType2 accountType;
 
     public void liveOdds(String id) {
         try {
-            //accountType = (AccountType) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("profile");
+            accountType = (AccountType2) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("profile");
             odds = liveGamesService.getAllLiveOdds(id);
-            /*if(AccountType.valueOf("FREE") == accountType){
+            if(AccountType2.valueOf("FREE") == accountType){
                 if (!odds.isEmpty()) {
                     odds.get(0).setWin1(0);
                     odds.get(0).setWin2(0);
                     odds.get(0).setBetName("Odds exclusiva para usuários PREMIUM");
                 }
-            }*/
+            }
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage("myform", new FacesMessage("Erro ao extrair dados da API"));
         }
@@ -58,12 +58,12 @@ public class OddsBean implements java.io.Serializable {
         return null;
     }
 
-    public AccountType getAccountType() {
+    public AccountType2 getAccountType() {
         return accountType;
     }
 
     public boolean isPremium() {
-        return accountType == AccountType.PREMIUM1 || accountType == AccountType.PREMIUM2;
+        return accountType == AccountType2.PREMIUM1 || accountType == AccountType2.PREMIUM2;
     }
 
 
