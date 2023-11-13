@@ -78,7 +78,6 @@ public class PaymentBean {
             FacesContext.getCurrentInstance().getExternalContext()
                     .redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()+"/login.xhtml");
         }
-        ;
     }
 
 //    public void reqPayment() throws IOException {
@@ -94,5 +93,4 @@ public class PaymentBean {
 //        String linkRedirect = paymentService.stringRequest("https://api-m.sandbox.paypal.com/v1/payments/payment",body);
 //        FacesContext.getCurrentInstance().getExternalContext().redirect(linkRedirect);
 //    }
-
 }
