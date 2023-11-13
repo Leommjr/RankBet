@@ -19,11 +19,6 @@ public class UserDAO extends BaseDao<UserModel> {
 
     public UserDAO(){super(UserModel.class);}
 
-
-    public SubscriptionModel getSubscription(long userId) {
-        return  new SubscriptionModel();
-    }
-
     public UserModel findByEmail(String email){
         try{
             CriteriaBuilder criteriaBuilder = this.getSession().getCriteriaBuilder();
@@ -39,6 +34,4 @@ public class UserDAO extends BaseDao<UserModel> {
             return null;
         }
     }
-
-
 }

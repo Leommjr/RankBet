@@ -7,7 +7,15 @@ import br.com.rankbet.utils.PasswordUtil;
 
 public class LoginService {
 
-    private static UserDAO userDAO = new UserDAO();
+    private UserDAO userDAO;
+
+    public LoginService(){
+        this.userDAO =  new UserDAO();
+    }
+
+    public LoginService(UserDAO userDAO){
+        this.userDAO =  userDAO;
+    }
 
     public UserModel verifyAValidLogin(String email, String password) {
         String md5Password = PasswordUtil.generateMD5(password);
@@ -22,4 +30,5 @@ public class LoginService {
         }
         return null;
     }
+
 }
