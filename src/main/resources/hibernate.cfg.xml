@@ -22,6 +22,7 @@
         <mapping class="br.com.rankbet.model.RoleModel"/>
         <mapping class="br.com.rankbet.model.PropertiesModel"/>
         <mapping class="br.com.rankbet.model.SubscriptionModel"/>
+        <mapping class="br.com.rankbet.model.PriceModel"/>
 
 
     </session-factory>
