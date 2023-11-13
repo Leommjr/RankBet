@@ -58,7 +58,7 @@ public class PaymentBean {
         subscriptionService = new SubscriptionService();
         Map<String, String> params =FacesContext.getCurrentInstance().
                 getExternalContext().getRequestParameterMap();
-         paymentId = params.get("paymentId");
+        paymentId = params.get("paymentId");
         payerid = params.get("PayerID");
 
 
@@ -77,7 +77,6 @@ public class PaymentBean {
             FacesContext.getCurrentInstance().getExternalContext()
                     .redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()+"/login.xhtml");
         }
-        ;
     }
 
 //    public void reqPayment() throws IOException {
