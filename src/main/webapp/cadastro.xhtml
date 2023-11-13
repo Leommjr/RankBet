@@ -159,24 +159,35 @@
 			</div>
 			
 			<div class="p-grid">
-						<div class="card p-col-4">
-							<h2 class="p-1">Free</h2>
-							<p>Preço: R$0</p>
-							<p>Acesso às melhores odds do mercado, com excessão da primeira do ranking.</p>
-						</div>
-
-						<div class="card p-col-4 #{registerBean.account eq 'Premium1' ? 'active' : ''}">
-							<h2 class="p-1">Premium 1</h2>
-							<p>Preço: R$9,90</p>
-							<p>Acesso às melhores odds do mercado, incluindo a primeira do ranking.</p>
-						</div>
-
-						<div class="card p-col-4 #{registerBean.account eq 'Premium2' ? 'active' : ''}">
-							<h2 class="p-1">Premium 2</h2>
-							<p>Preço: R$21,90</p>
-							<p>Todas as odds, com o adicional de uma lista com o histórico dos times da partida selecionada.</p>
-						</div>
+				<div class="p-col-12">
+					<h6 class="text-white text-left">Tipo de Conta</h6>
+					<p:selectOneRadio id="console" value="#{registerBean.account}">
+						<f:selectItem itemLabel="Free" styleClass="text-white" itemValue="FREE"/>
+						<f:selectItem itemLabel="Premium 1" styleClass="text-white" itemValue="PREMIUM1"/>
+						<f:selectItem itemLabel="Premium 2" styleClass="text-white" itemValue="PREMIUM2"/>
+					</p:selectOneRadio>
 				</div>
+			</div>
+
+			<div class="p-grid">
+				<div class="card p-col-4">
+					<h2 class="p-1">Free</h2>
+					<p>Preço: R$0</p>
+					<p>Acesso às melhores odds do mercado, com excessão da primeira do ranking.</p>
+				</div>
+
+				<div class="card p-col-4 #{registerBean.account eq 'Premium1' ? 'active' : ''}">
+					<h2 class="p-1">Premium 1</h2>
+					<p>Preço: R$9,90</p>
+					<p>Acesso às melhores odds do mercado, incluindo a primeira do ranking.</p>
+				</div>
+
+				<div class="card p-col-4 #{registerBean.account eq 'Premium2' ? 'active' : ''}">
+					<h2 class="p-1">Premium 2</h2>
+					<p>Preço: R$21,90</p>
+					<p>Todas as odds, com o adicional de uma lista com o histórico dos times da partida selecionada.</p>
+				</div>
+			</div>
 
 			<div class="p-grid text-left">
 				<div class="p-col-6">
