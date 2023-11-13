@@ -69,7 +69,7 @@ public class PaymentService {
             responseAuth = response.readEntity(String.class);
             token = captureToken(responseAuth);
             if(token.isEmpty()){
-            //FACE CONTEXT
+                //FACE CONTEXT
                 return "FAIL";
             }
             return token;
@@ -114,12 +114,12 @@ public class PaymentService {
     }
 
     public String captureToken(String json){
-       try{
-           JSONObject jsonObject = new JSONObject(json);
-           return jsonObject.getString("access_token");
-       }catch (Exception ex){
-           return "";
-       }
+        try{
+            JSONObject jsonObject = new JSONObject(json);
+            return jsonObject.getString("access_token");
+        }catch (Exception ex){
+            return "";
+        }
     }
 
     public Response simpleHeaderFluently(String headerKey, String headerValue, WebTarget target,String body) {

@@ -90,6 +90,6 @@ public class PaymentUtil {
                 "    \"cancel_url\": \""+"http://app.rankbet.tech:8080"+FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()+"/cancel.xhtml\""+"\n" +
                 "  }\n" +
                 "}";
-       return body;
+        return body;
     }
 }

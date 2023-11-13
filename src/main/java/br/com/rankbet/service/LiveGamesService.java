@@ -22,9 +22,7 @@ import br.com.rankbet.enums.EndpointsEnum;
 
 @ApplicationScoped
 public class LiveGamesService implements Serializable {
-    /**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
     private Client client;
     private WebTarget target;
@@ -39,7 +37,6 @@ public class LiveGamesService implements Serializable {
         this.client = client;
         this.jsonb = jsonb;
     }
-
 
     @PostConstruct
     public void init() {

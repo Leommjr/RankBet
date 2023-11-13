@@ -103,7 +103,7 @@ public class SubscriptionModel {
     public void setUserId(long userId) {
         this.userId = userId;
     }
-    
+
     public SubscriptionModel(long id, String createBy, LocalDateTime createAt, String updateBy, LocalDateTime updateAt, Float price, LocalDateTime expiresAt, long roleId, long userId) {
         this.id = id;
         this.createBy = createBy;
