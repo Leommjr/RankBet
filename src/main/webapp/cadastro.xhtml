@@ -19,10 +19,15 @@
 		.p-grid {
 			margin-bottom: 40px;
 		}
+		
+		label{
+			color: white!important;
+		}
 
 		.card {
 			display: inline-block;
 			width: 200px;
+            height: 300px;
 			border: 1px solid rgb(255, 196, 47) !important;
 			padding: 10px;
 			background-color: transparent !important;
@@ -36,12 +41,6 @@
 			background-color: rgb(255, 196, 47) !important;
 			border: solid 1px rgb(255, 196, 47) !important;
 			color: rgb(28, 28, 28) !important;
-		}
-
-		.card:hover {
-			background-color: rgb(69, 69, 69) !important;
-			border: solid 1px rgb(69, 69, 69) !important;
-			color: white !important;
 		}
 
 		.navbar {
@@ -133,23 +132,51 @@
 						</p:inputText>-->
 				</div>
 			</div>
+			<div class="p-grid">
+				<div class="p-col-6 m-2">
+				<h6 class="text-white text-left">Senha</h6>
+				<p:password style="width: 22vw;" value="#{registerBean.userDTO.userPassword}" required="true"
+							feedback="true" promptLabel="Por favor, digite a senha" weakLabel="Senha Fraca"
+							goodLabel="Senha Moderada" match="pw2" strongLabel="Senha Forte" />
+				</div>
+				<div class="p-col-6 m-2">
+				<h6 class="text-white text-left">Confirme a Senha</h6>
+				<p:password id="pw2" value="#{registerBean.newPasseword}" style="width: 22vw;" required="true" feedback="true"
+							promptLabel="Por favor, digite a senha" weakLabel="Senha Fraca"
+							goodLabel="Senha Moderada" strongLabel="Senha Forte"/>
+				</div>
+			</div>
+	
+			<div class="p-grid">
+				<div class="p-col-12">
+				<h6 class="text-white text-left">Tipo de Conta</h6>
+				<p:selectOneRadio id="console" value="#{registerBean.account}">
+					<f:selectItem itemLabel="Free" styleClass="text-white" itemValue="FREE"/>
+					<f:selectItem itemLabel="Premium 1" styleClass="text-white" itemValue="PREMIUM1"/>
+					<f:selectItem itemLabel="Premium 2" styleClass="text-white" itemValue="PREMIUM2"/>
+				</p:selectOneRadio>
+				</div>
+			</div>
+			
+			<div class="p-grid">
+						<div class="card p-col-4">
+							<h2 class="p-1">Free</h2>
+							<p>Preço: R$0</p>
+							<p>Acesso às melhores odds do mercado, com excessão da primeira do ranking.</p>
+						</div>
 
-			<h6 class="text-white text-left">Senha</h6>
-			<p:password style="width: 22vw;" value="#{registerBean.userDTO.userPassword}" required="true"
-						feedback="true" promptLabel="Por favor, digite a senha" weakLabel="Senha Fraca"
-						goodLabel="Senha Moderada" match="pw2" strongLabel="Senha Forte" />
+						<div class="card p-col-4 #{registerBean.account eq 'Premium1' ? 'active' : ''}">
+							<h2 class="p-1">Premium 1</h2>
+							<p>Preço: R$9,90</p>
+							<p>Acesso às melhores odds do mercado, incluindo a primeira do ranking.</p>
+						</div>
 
-			<h6 class="text-white text-left">Confirme a Senha</h6>
-			<p:password id="pw2" value="#{registerBean.newPasseword}" style="width: 22vw;" required="true" feedback="true"
-						promptLabel="Por favor, digite a senha" weakLabel="Senha Fraca"
-						goodLabel="Senha Moderada" strongLabel="Senha Forte"/>
-
-			<h5 class="mt-0">Basic</h5>
-			<p:selectOneRadio id="console" value="#{registerBean.account}">
-				<f:selectItem itemLabel="Free" itemValue="FREE"/>
-				<f:selectItem itemLabel="Premium 1" itemValue="PREMIUM1"/>
-				<f:selectItem itemLabel="Premium 2" itemValue="PREMIUM2"/>
-			</p:selectOneRadio>
+						<div class="card p-col-4 #{registerBean.account eq 'Premium2' ? 'active' : ''}">
+							<h2 class="p-1">Premium 2</h2>
+							<p>Preço: R$21,90</p>
+							<p>Todas as odds, com o adicional de uma lista com o histórico dos times da partida selecionada.</p>
+						</div>
+				</div>
 
 			<div class="p-grid text-left">
 				<div class="p-col-6">
