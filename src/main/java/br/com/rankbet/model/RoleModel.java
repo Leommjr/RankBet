@@ -92,7 +92,7 @@ public class RoleModel {
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
     }
-
+  
     public RoleModel(String typeName, String roleDescription, LocalDateTime createAt, LocalDateTime updatedAt, int userEnabled, String createBy, String updatedBy) {
         this.typeName = typeName;
         this.roleDescription = roleDescription;
@@ -106,5 +106,6 @@ public class RoleModel {
     public RoleModel() {
 
     }
+
 
 }

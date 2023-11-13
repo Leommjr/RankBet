@@ -29,6 +29,5 @@
         <mapping class="br.com.rankbet.model.PriceModel"/>
 
 
-
     </session-factory>
 </hibernate-configuration>
