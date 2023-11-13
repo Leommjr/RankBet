@@ -103,4 +103,20 @@ public class SubscriptionModel {
     public void setUserId(long userId) {
         this.userId = userId;
     }
+
+    public SubscriptionModel(long id, String createBy, LocalDateTime createAt, String updateBy, LocalDateTime updateAt, Float price, LocalDateTime expiresAt, long roleId, long userId) {
+        this.id = id;
+        this.createBy = createBy;
+        this.createAt = createAt;
+        this.updateBy = updateBy;
+        this.updateAt = updateAt;
+        this.price = price;
+        this.expiresAt = expiresAt;
+        this.roleId = roleId;
+        this.userId = userId;
+    }
+    public SubscriptionModel(){
+
+    }
+
 }

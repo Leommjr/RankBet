@@ -1,6 +1,7 @@
 package br.com.rankbet.service;
 
 
+import br.com.rankbet.dao.UserDAO;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.WebTarget;
@@ -21,9 +22,7 @@ import br.com.rankbet.enums.EndpointsEnum;
 
 @ApplicationScoped
 public class LiveGamesService implements Serializable {
-    /**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
     private Client client;
     private WebTarget target;
@@ -31,6 +30,13 @@ public class LiveGamesService implements Serializable {
 
     private List<Game> liveGames;
 
+    public LiveGamesService(){
+    }
+
+    public LiveGamesService(Client client, Jsonb jsonb){
+        this.client = client;
+        this.jsonb = jsonb;
+    }
 
     @PostConstruct
     public void init() {
@@ -68,6 +74,11 @@ public class LiveGamesService implements Serializable {
                     .forEach(liveOddsfinal::add);
         }
         Collections.sort(liveOddsfinal, new Comparator<Game>() {
+            @Override
+            public int compare(Game game1, Game game2) {
+                return Float.compare(game2.getWin1(), game1.getWin1());
+            }
+        });        Collections.sort(liveOddsfinal, new Comparator<Game>() {
             @Override
             public int compare(Game game1, Game game2) {
                 return Float.compare(game2.getWin1(), game1.getWin1());

@@ -9,18 +9,41 @@
     <meta charset="UTF-8"/>
     <title>RankBet</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../resources/style.css"/>
     <style>
-       .navbar {
-    		background-color: #ddd;
+        .navbar {
+           background-color: black!important;
+        }
+        .title-yellow{
+            color:rgb(255, 196, 47)!important;
+        }
+        .p-link:hover{
+            color: white!important;
+        }
+        .p-link{
+            text-decoration: none!important;
+        }
     </style>
 </h:head>
 <h:body>
-    <nav class="navbar navbar-expand-md">
-        <div class="container">
-            <span class="navbar-brand text-black mx-auto">RankBet</span>
+    <nav class="navbar navbar-expand-md justify-content-between">
+        <p:graphicImage name="images/logo-rankbet.jpeg" class="navbar-brand img-fluid" width="160" height="auto"/>
+        <div>
+
+            <p:link href="index.xhtml" value="HOME" class="title-yellow p-link p-4"></p:link>
+            <p:link href="updateUserData.xhtml" value="PERFIL" class="title-yellow p-link p-4"></p:link>
+			<p:link href="updatePassword.xhtml" value="ALTERAR SENHA" class="title-yellow p-link p-4"></p:link>
+            <p:commandLink action="#{authenticationBean.logout}" value="SAIR" class="title-yellow p-link p-4"></p:commandLink>
+
         </div>
+        <!--<p:selectCheckboxMenu id="multiple" value="#{checkboxView.selectedCities2}" label="Cities" style="min-width: 15rem"
+                                  multiple="true" filter="true" filterMatchMode="startsWith" panelStyle="width: 30rem" scrollHeight="250"
+                                  emptyLabel="Please select..." updateLabel="true">
+            <p:ajax event="itemUnselect" listener="#{checkboxView.onItemUnselect}"/>
+            <f:selectItems value="#{checkboxView.cities}"/>
+        </p:selectCheckboxMenu>-->
     </nav>
-    <div class="container">
+    <div>
         <ui:insert name="content">Content</ui:insert>
     </div>
 </h:body>
