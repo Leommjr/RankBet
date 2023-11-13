@@ -3,9 +3,9 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui" template="../WEB-INF/layout.xhtml">
+	xmlns:p="http://primefaces.org/ui" template="WEB-INF/layout.xhtml">
 	<ui:define name="content">
-		<link rel="StyleSheet" type="text/css" href="../resources/style.css" media="screen"></link>
+		<link rel="StyleSheet" type="text/css" href="resources/style.css" media="screen"></link>
 		<style>
 			body{
 				background-color: black;
@@ -61,13 +61,16 @@
 						<p:inputText required="true" style="width: 45vw;" value="#{updateDataBean.userDTO.userName}"/>
 					</div>
 				</div>
-
-				<div class="p-col-12">
-					<h6 class="text-white text-left">E-mail</h6>
-					<p:inputText id="email" type="email" required="true" style="width: 45vw;" value="#{updateDataBean.userDTO.email}"/>
-					<p:message for="email" display="tooltip"/>
-					<h:outputText value="#{updateDataBean.userDTO.email}"/>
+				
+				<div class="p-grid">
+					<div class="p-col-12">
+						<h6 class="text-white text-left">E-mail</h6>
+						<p:inputText id="email" type="email" required="true" style="width: 45vw;" value="#{updateDataBean.userDTO.email}"/>
+						<p:message for="email" display="tooltip"/>
+						<h:outputText value="#{updateDataBean.userDTO.email}"/>
+					</div>
 				</div>
+				
 				<div class="p-grid text-left">
 					<div class="p-col-6">
 						<p:commandButton update="@form" value="Salvar" actionListener="#{updateDataBean.submit}" validateClient="true" class="ui-button"/>
