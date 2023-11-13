@@ -105,4 +105,20 @@ public class UserModel {
         this.userEnabled = userEnabled;
     }
 
+    public UserModel(long id, String firstName, String lastName, String email, String userName, String userPassword, LocalDateTime createAt, LocalDateTime updatedAt, Long userEnabled) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.createAt = createAt;
+        this.updatedAt = updatedAt;
+        this.userEnabled = userEnabled;
+    }
+
+    public UserModel(){
+
+    }
+
 }

@@ -1,6 +1,7 @@
 package br.com.rankbet.service;
 
 
+import br.com.rankbet.dao.UserDAO;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.WebTarget;
@@ -30,6 +31,14 @@ public class LiveGamesService implements Serializable {
     private Jsonb jsonb;
 
     private List<Game> liveGames;
+
+    public LiveGamesService(){
+    }
+
+    public LiveGamesService(Client client, Jsonb jsonb){
+        this.client = client;
+        this.jsonb = jsonb;
+    }
 
 
     @PostConstruct
@@ -68,6 +77,11 @@ public class LiveGamesService implements Serializable {
                     .forEach(liveOddsfinal::add);
         }
         Collections.sort(liveOddsfinal, new Comparator<Game>() {
+            @Override
+            public int compare(Game game1, Game game2) {
+                return Float.compare(game2.getWin1(), game1.getWin1());
+            }
+        });        Collections.sort(liveOddsfinal, new Comparator<Game>() {
             @Override
             public int compare(Game game1, Game game2) {
                 return Float.compare(game2.getWin1(), game1.getWin1());

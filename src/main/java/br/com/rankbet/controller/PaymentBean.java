@@ -10,6 +10,7 @@ import jakarta.annotation.ManagedBean;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.context.FacesContext;
+import org.primefaces.shaded.json.JSONObject;
 import jakarta.inject.Named;
 
 import java.io.IOException;
